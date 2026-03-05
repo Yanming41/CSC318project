@@ -31,25 +31,25 @@ const entrances = [
 const ScreenEntranceSelection: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="text-lg font-semibold">Choose your entrance</h2>
-      <p className="text-sm text-muted-foreground mt-0.5">Wilson Hall has 3 entrances</p>
+      <h2 className="transit-hero-text">Choose your entrance</h2>
+      <p className="text-sm text-muted-foreground mt-1">Wilson Hall has 3 entrances</p>
     </div>
 
     {/* Building map with entrance pins */}
     <div className="transit-card">
-      <div className="relative bg-[hsl(var(--secondary))] rounded-lg" style={{ height: 140 }}>
+      <div className="relative bg-[hsl(var(--secondary))] rounded-xl" style={{ height: 140 }}>
         {/* Simplified building outline */}
-        <div className="absolute inset-4 border-2 border-[hsl(var(--muted-foreground))] rounded-md opacity-40" />
-        <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-muted-foreground">Wilson Hall</span>
+        <div className="absolute inset-4 border-2 border-[hsl(var(--muted-foreground))] rounded-lg opacity-40" />
+        <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-muted-foreground">Wilson Hall</span>
         {/* Entrance markers */}
-        <div className="absolute top-1/2 left-2 -translate-y-1/2 w-6 h-6 rounded-full bg-[hsl(145,60%,42%)] flex items-center justify-center text-white text-[10px] font-bold">A</div>
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[hsl(30,90%,55%)] flex items-center justify-center text-white text-[10px] font-bold">B</div>
-        <div className="absolute top-1/2 right-2 -translate-y-1/2 w-6 h-6 rounded-full bg-[hsl(0,72%,51%)] flex items-center justify-center text-white text-[10px] font-bold">C</div>
+        <div className="absolute top-1/2 left-2 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(152,72%,40%)] flex items-center justify-center text-white text-xs font-bold shadow-md">A</div>
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[hsl(28,95%,52%)] flex items-center justify-center text-white text-xs font-bold shadow-md">B</div>
+        <div className="absolute top-1/2 right-2 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(4,80%,52%)] flex items-center justify-center text-white text-xs font-bold shadow-md">C</div>
       </div>
     </div>
 
     {/* Entrance options */}
-    <div className="space-y-2">
+    <div className="space-y-2.5">
       {entrances.map((e, i) => (
         <button
           key={i}
@@ -57,15 +57,15 @@ const ScreenEntranceSelection: React.FC<{ onNavigate: (id: string) => void }> = 
           onClick={() => onNavigate("entryConfirm")}
         >
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent))] flex items-center justify-center flex-shrink-0">
-              <DoorOpen className="w-5 h-5 text-[hsl(var(--accent-foreground))]" />
+            <div className="w-12 h-12 rounded-2xl bg-[hsl(var(--accent))] flex items-center justify-center flex-shrink-0">
+              <DoorOpen className="w-6 h-6 text-[hsl(var(--accent-foreground))]" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className="font-semibold text-sm">{e.label}</p>
+                <p className="font-bold text-base">{e.label}</p>
                 <span className={e.badgeClass}>{e.badge}</span>
               </div>
-              <p className="text-xs text-muted-foreground mt-0.5">{e.sublabel} - {e.desc}</p>
+              <p className="text-sm text-muted-foreground mt-0.5">{e.sublabel} - {e.desc}</p>
             </div>
           </div>
         </button>

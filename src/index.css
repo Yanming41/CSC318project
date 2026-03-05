@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 15%;
 
-    --primary: 174 62% 38%;
+    --primary: 174 80% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 10% 94%;
@@ -22,32 +22,32 @@
     --muted: 210 10% 92%;
     --muted-foreground: 220 10% 50%;
 
-    --accent: 174 50% 94%;
-    --accent-foreground: 174 62% 28%;
+    --accent: 174 70% 92%;
+    --accent-foreground: 174 80% 30%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 4 80% 52%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 10% 88%;
     --input: 220 10% 82%;
-    --ring: 174 62% 38%;
+    --ring: 174 80% 40%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 26%;
-    --sidebar-primary: 174 62% 38%;
+    --sidebar-primary: 174 80% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 174 50% 94%;
-    --sidebar-accent-foreground: 174 62% 28%;
+    --sidebar-accent: 174 70% 92%;
+    --sidebar-accent-foreground: 174 80% 30%;
     --sidebar-border: 220 10% 88%;
-    --sidebar-ring: 174 62% 38%;
+    --sidebar-ring: 174 80% 40%;
 
-    --transit-teal: 174 62% 38%;
-    --transit-teal-light: 174 50% 94%;
-    --transit-green: 145 60% 42%;
-    --transit-orange: 30 90% 55%;
-    --transit-red: 0 72% 51%;
+    --transit-teal: 174 80% 40%;
+    --transit-teal-light: 174 70% 92%;
+    --transit-green: 152 72% 40%;
+    --transit-orange: 28 95% 52%;
+    --transit-red: 4 80% 52%;
   }
 }
 
@@ -65,7 +65,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -73,11 +73,11 @@
   /* ===== Transit-style Components ===== */
 
   .transit-card {
-    @apply bg-card rounded-xl p-4 shadow-sm;
+    @apply bg-card rounded-2xl p-4 shadow-sm;
   }
 
   .transit-card-interactive {
-    @apply bg-card rounded-xl p-4 shadow-sm cursor-pointer transition-all active:scale-[0.98];
+    @apply bg-card rounded-2xl p-4 shadow-sm cursor-pointer transition-all active:scale-[0.98];
   }
 
   .transit-card-interactive:hover {
@@ -85,7 +85,7 @@
   }
 
   .transit-btn {
-    @apply rounded-xl px-5 py-3 font-semibold text-base cursor-pointer transition-all active:scale-[0.97];
+    @apply rounded-2xl px-5 py-3.5 font-bold text-base cursor-pointer transition-all active:scale-[0.97];
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
   }
@@ -95,7 +95,7 @@
   }
 
   .transit-btn-outline {
-    @apply rounded-xl px-5 py-3 font-semibold text-base cursor-pointer transition-all border-2 active:scale-[0.97];
+    @apply rounded-2xl px-5 py-3.5 font-bold text-base cursor-pointer transition-all border-2 active:scale-[0.97];
     border-color: hsl(var(--border));
     background: hsl(var(--card));
     color: hsl(var(--foreground));
@@ -106,7 +106,7 @@
   }
 
   .transit-btn-ghost {
-    @apply rounded-lg px-4 py-2 font-medium text-sm cursor-pointer transition-all;
+    @apply rounded-xl px-4 py-2.5 font-semibold text-sm cursor-pointer transition-all;
     color: hsl(var(--primary));
     background: transparent;
   }
@@ -116,7 +116,7 @@
   }
 
   .transit-chip {
-    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all cursor-pointer;
+    @apply inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer;
     background: hsl(var(--secondary));
     color: hsl(var(--secondary-foreground));
   }
@@ -131,22 +131,65 @@
   }
 
   .transit-input {
-    @apply rounded-xl px-4 py-3 bg-card text-foreground w-full text-base outline-none transition-all border-2;
+    @apply rounded-2xl px-4 py-3.5 bg-card text-foreground w-full text-base outline-none transition-all border-2;
     border-color: hsl(var(--border));
   }
 
   .transit-input:focus {
     border-color: hsl(var(--primary));
-    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
   }
 
   .transit-input::placeholder {
     @apply text-muted-foreground;
   }
 
+  /* ===== Hero / Key Info Typography ===== */
+
+  .transit-hero-text {
+    @apply text-2xl font-bold tracking-tight;
+    color: hsl(var(--foreground));
+  }
+
+  .transit-hero-sub {
+    @apply text-lg font-semibold;
+    color: hsl(var(--foreground));
+  }
+
+  .transit-metric {
+    @apply text-3xl font-extrabold tracking-tight;
+    color: hsl(var(--primary));
+  }
+
+  .transit-metric-unit {
+    @apply text-base font-semibold ml-1;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Action banner — colored strip for key step info */
+  .transit-action-banner {
+    @apply rounded-2xl px-4 py-3 flex items-center gap-3;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .transit-action-banner .banner-text {
+    @apply text-lg font-bold;
+  }
+
+  .transit-action-banner-green {
+    @apply rounded-2xl px-4 py-3 flex items-center gap-3;
+    background: hsl(var(--transit-green));
+    color: white;
+  }
+
+  .transit-action-banner-green .banner-text {
+    @apply text-lg font-bold;
+  }
+
   /* Image placeholder for prototype */
   .transit-img-placeholder {
-    @apply rounded-xl overflow-hidden flex items-center justify-center;
+    @apply rounded-2xl overflow-hidden flex items-center justify-center;
     background: hsl(var(--secondary));
     aspect-ratio: 16/9;
   }
@@ -163,7 +206,7 @@
   }
 
   .transit-progress-step {
-    @apply flex-1 h-1 rounded-full transition-all;
+    @apply flex-1 h-2 rounded-full transition-all;
     background: hsl(var(--border));
   }
 
@@ -181,27 +224,27 @@
 
   /* Badge / Tag */
   .transit-badge {
-    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold;
   }
 
   .transit-badge-success {
-    background: hsl(var(--transit-green) / 0.12);
+    background: hsl(var(--transit-green) / 0.14);
     color: hsl(var(--transit-green));
   }
 
   .transit-badge-warning {
-    background: hsl(var(--transit-orange) / 0.12);
+    background: hsl(var(--transit-orange) / 0.14);
     color: hsl(var(--transit-orange));
   }
 
   .transit-badge-danger {
-    background: hsl(var(--transit-red) / 0.12);
+    background: hsl(var(--transit-red) / 0.14);
     color: hsl(var(--transit-red));
   }
 
   /* Info row */
   .transit-info-row {
-    @apply flex items-center gap-3 py-2.5;
+    @apply flex items-center gap-3 py-3;
   }
 
   .transit-info-row + .transit-info-row {
@@ -210,7 +253,7 @@
   }
 
   .transit-info-icon {
-    @apply w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm;
+    @apply w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0;
     background: hsl(var(--accent));
     color: hsl(var(--accent-foreground));
   }
@@ -238,14 +281,14 @@
 
   /* Facilitator panel */
   .facilitator-panel {
-    @apply rounded-xl p-4 mt-4 border-2 border-dashed;
+    @apply rounded-2xl p-4 mt-4 border-2 border-dashed;
     border-color: hsl(var(--transit-orange));
     background: hsl(var(--transit-orange) / 0.06);
   }
 
   /* Wizard panel */
   .wizard-panel {
-    @apply rounded-xl p-4 mt-4 border-2 border-dashed;
+    @apply rounded-2xl p-4 mt-4 border-2 border-dashed;
     border-color: hsl(var(--transit-red) / 0.5);
     background: hsl(var(--transit-red) / 0.04);
   }

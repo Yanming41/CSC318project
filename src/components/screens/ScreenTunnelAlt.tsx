@@ -4,29 +4,29 @@ import { Sun, Timer, ChevronRight, ArrowLeft } from "lucide-react";
 const ScreenTunnelAlt: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="text-lg font-semibold">Above-ground route</h2>
-      <p className="text-sm text-muted-foreground mt-0.5">Walk outside instead of through the connector</p>
+      <h2 className="transit-hero-text">Above-ground route</h2>
+      <p className="text-sm text-muted-foreground mt-1">Walk outside instead of through the connector</p>
     </div>
 
     <div className="transit-card space-y-0">
       <div className="transit-info-row">
         <div className="transit-info-icon"><span className="text-sm font-bold">1</span></div>
-        <p className="text-sm">Exit building through Entrance A</p>
+        <p className="text-base font-medium">Exit building through Entrance A</p>
       </div>
       <div className="transit-info-row">
         <div className="transit-info-icon"><span className="text-sm font-bold">2</span></div>
-        <p className="text-sm">Walk along St. George St (~3 min)</p>
+        <p className="text-base font-medium">Walk along St. George St (~3 min)</p>
       </div>
       <div className="transit-info-row">
         <div className="transit-info-icon"><span className="text-sm font-bold">3</span></div>
-        <p className="text-sm">Re-enter through next building's main entrance</p>
+        <p className="text-base font-medium">Re-enter through next building's main entrance</p>
       </div>
     </div>
 
     <div className="transit-card flex items-center justify-between">
       <div className="flex items-center gap-2">
         <Timer className="w-4 h-4 text-muted-foreground" />
-        <span className="text-sm font-medium">+2 min vs connector</span>
+        <span className="text-base font-bold">+2 min vs connector</span>
       </div>
       <div className="flex items-center gap-2">
         <Sun className="w-4 h-4 text-muted-foreground" />

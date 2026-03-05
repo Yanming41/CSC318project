@@ -4,8 +4,17 @@ import { CheckCircle2, Sun, DoorOpen, Timer, ChevronRight, ArrowLeft, ShieldAler
 const ScreenTunnel: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="text-lg font-semibold">Connector passage</h2>
-      <p className="text-sm text-muted-foreground mt-0.5">Your route goes through a building connector</p>
+      <h2 className="transit-hero-text">Connector passage</h2>
+      <p className="text-sm text-muted-foreground mt-1">Your route goes through a building connector</p>
+    </div>
+
+    {/* Walk time metric */}
+    <div className="transit-action-banner-green">
+      <Timer className="w-6 h-6" />
+      <div>
+        <span className="banner-text">~1 min walk</span>
+        <span className="text-sm opacity-80 ml-2">• well-lit route</span>
+      </div>
     </div>
 
     {/* Tunnel photo - shown directly */}
@@ -19,20 +28,18 @@ const ScreenTunnel: React.FC<{ onNavigate: (id: string) => void }> = ({ onNaviga
     {/* Reassurance cues */}
     <div className="transit-card space-y-0">
       <div className="transit-info-row">
-        <div className="transit-info-icon"><CheckCircle2 className="w-4 h-4" /></div>
-        <p className="text-sm font-medium">You're on track</p>
+        <div className="transit-info-icon" style={{ background: "hsl(var(--transit-green) / 0.14)", color: "hsl(var(--transit-green))" }}>
+          <CheckCircle2 className="w-5 h-5" />
+        </div>
+        <p className="text-base font-bold" style={{ color: "hsl(var(--transit-green))" }}>You're on track</p>
       </div>
       <div className="transit-info-row">
-        <div className="transit-info-icon"><Sun className="w-4 h-4" /></div>
-        <p className="text-sm">Well-lit public route</p>
+        <div className="transit-info-icon"><Sun className="w-5 h-5" /></div>
+        <p className="text-base font-medium">Well-lit public route</p>
       </div>
       <div className="transit-info-row">
-        <div className="transit-info-icon"><DoorOpen className="w-4 h-4" /></div>
-        <p className="text-sm">Exit 30 steps ahead</p>
-      </div>
-      <div className="transit-info-row">
-        <div className="transit-info-icon"><Timer className="w-4 h-4" /></div>
-        <p className="text-sm">~1 min walk</p>
+        <div className="transit-info-icon"><DoorOpen className="w-5 h-5" /></div>
+        <p className="text-base font-medium">Exit 30 steps ahead</p>
       </div>
     </div>
 
@@ -42,11 +49,11 @@ const ScreenTunnel: React.FC<{ onNavigate: (id: string) => void }> = ({ onNaviga
     </div>
 
     <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("lastMile")}>
-      Continue <ChevronRight className="w-4 h-4" />
+      Continue <ChevronRight className="w-5 h-5" />
     </button>
 
     <button className="transit-btn-outline w-full flex items-center justify-center gap-2" onClick={() => onNavigate("tunnelAlt")}>
-      <ShieldAlert className="w-4 h-4" /> Prefer outdoor route?
+      <ShieldAlert className="w-5 h-5" /> Prefer outdoor route?
     </button>
 
     <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("floorSelection")}>

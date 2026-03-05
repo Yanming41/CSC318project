@@ -42,22 +42,29 @@ const ScreenLastMile: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
   return (
     <div className="space-y-4">
       <div className="px-1">
-        <h2 className="text-lg font-semibold">Find your room</h2>
-        <p className="text-sm text-muted-foreground">Checkpoint {step + 1} of {checkpoints.length}</p>
+        <h2 className="transit-hero-text">Find your room</h2>
+      </div>
+
+      {/* Step counter badge */}
+      <div className="transit-action-banner">
+        <current.Icon className="w-6 h-6" />
+        <div>
+          <span className="banner-text">Step {step + 1}</span>
+          <span className="text-sm opacity-80 ml-1">of {checkpoints.length}</span>
+        </div>
       </div>
 
       {/* 5-step progress bar */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1.5">
         {checkpoints.map((_, i) => (
           <div
             key={i}
-            className={`flex-1 h-1.5 rounded-full transition-all ${
-              i < step
-                ? "bg-[hsl(145,60%,42%)]"
+            className={`flex-1 h-2 rounded-full transition-all ${i < step
+                ? "bg-[hsl(var(--transit-green))]"
                 : i === step
-                ? "bg-[hsl(174,62%,38%)]"
-                : "bg-[hsl(var(--border))]"
-            }`}
+                  ? "bg-[hsl(var(--primary))]"
+                  : "bg-[hsl(var(--border))]"
+              }`}
           />
         ))}
       </div>
@@ -71,20 +78,20 @@ const ScreenLastMile: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
         {/* Direction arrow overlay */}
         {!isLast && (
           <div className="absolute right-4 top-1/2 -translate-y-1/2">
-            <ChevronRight className="w-10 h-10 text-[hsl(174,62%,38%)] opacity-60" />
+            <ChevronRight className="w-12 h-12 text-[hsl(var(--primary))] opacity-60" />
           </div>
         )}
       </div>
 
       {/* Current checkpoint info */}
       <div className="transit-card">
-        <h3 className="font-semibold text-base">{current.title}</h3>
-        <p className="text-sm text-muted-foreground mt-1">{current.description}</p>
+        <h3 className="font-bold text-xl">{current.title}</h3>
+        <p className="text-sm text-muted-foreground mt-1.5">{current.description}</p>
       </div>
 
       {/* Numbering hint */}
-      <div className="transit-card text-xs text-muted-foreground">
-        <span className="font-semibold text-foreground">Numbering hint:</span> 10xx = Floor 1, rooms increase left to right
+      <div className="transit-card text-sm text-muted-foreground">
+        <span className="font-bold text-foreground">Numbering hint:</span> 10xx = Floor 1, rooms increase left to right
       </div>
 
       {/* Navigation */}
@@ -103,7 +110,7 @@ const ScreenLastMile: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
           </button>
         ) : (
           <button className="transit-btn flex-1 flex items-center justify-center gap-1" onClick={() => setStep(step + 1)}>
-            Next <ChevronRight className="w-4 h-4" />
+            Next <ChevronRight className="w-5 h-5" />
           </button>
         )}
       </div>

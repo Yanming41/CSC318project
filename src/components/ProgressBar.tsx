@@ -14,20 +14,18 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentScreen }) => {
         {NAV_STAGES.map((stage) => (
           <div key={stage.id} className="flex-1 flex flex-col items-center gap-1">
             <div
-              className={`w-full h-1.5 rounded-full transition-all ${
-                stage.id < currentStage
+              className={`w-full h-2 rounded-full transition-all ${stage.id < currentStage
                   ? "bg-[hsl(145,60%,42%)]"
                   : stage.id === currentStage
-                  ? "bg-[hsl(174,62%,38%)]"
-                  : "bg-[hsl(var(--border))]"
-              }`}
+                    ? "bg-[hsl(174,62%,38%)]"
+                    : "bg-[hsl(var(--border))]"
+                }`}
             />
             <span
-              className={`text-[10px] font-medium ${
-                stage.id <= currentStage
+              className={`text-[11px] font-semibold ${stage.id <= currentStage
                   ? "text-foreground"
                   : "text-muted-foreground"
-              }`}
+                }`}
             >
               {stage.label}
             </span>

@@ -72,7 +72,7 @@ const WayfindingPrototype: React.FC = () => {
                 <span className="text-xs text-muted-foreground">{data.designReqs.join(", ")}</span>
               </div>
               <div className="screen-body pb-4">
-                <Component onNavigate={() => {}} />
+                <Component onNavigate={() => { }} />
               </div>
               <div className="p-3 border-t border-[hsl(var(--border))]">
                 <p className="text-xs text-muted-foreground">Goal: {data.facilitator.goal}</p>
@@ -91,6 +91,14 @@ const WayfindingPrototype: React.FC = () => {
       {/* Top bar */}
       <div className="no-print max-w-sm mx-auto mb-3 flex flex-wrap items-center gap-2">
         <h1 className="text-lg font-semibold flex-1 text-foreground">UofT Wayfinder</h1>
+        {currentScreen !== "home" && (
+          <button
+            className="transit-chip text-xs active"
+            onClick={() => handleNavigate("home")}
+          >
+            🏠 Home
+          </button>
+        )}
         <button
           className={`transit-chip text-xs ${showFacilitator ? "active" : ""}`}
           onClick={() => setShowFacilitator(!showFacilitator)}

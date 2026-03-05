@@ -11,26 +11,25 @@ const floors = [
 const ScreenFloorSelection: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="text-lg font-semibold">Select your floor</h2>
-      <p className="text-sm text-muted-foreground mt-0.5">Room 1017 is on Floor 1</p>
+      <h2 className="transit-hero-text">Select your floor</h2>
+      <p className="text-sm text-muted-foreground mt-1">Room 1017 is on <span className="font-bold text-foreground">Floor 1</span></p>
     </div>
 
     {/* Floor buttons */}
-    <div className="space-y-2">
+    <div className="space-y-2.5">
       {floors.map((f, i) => (
         <button
           key={i}
-          className={`w-full text-left rounded-xl px-4 py-3 transition-all ${
-            f.room
-              ? "bg-[hsl(174,62%,38%)] text-white font-semibold"
+          className={`w-full text-left rounded-2xl px-4 py-4 transition-all ${f.room
+              ? "bg-[hsl(var(--primary))] text-white font-bold shadow-md"
               : "transit-card-interactive"
-          }`}
+            }`}
           onClick={() => onNavigate("tunnel")}
         >
           <div className="flex items-center justify-between">
-            <span className="text-sm">{f.label}</span>
+            <span className="text-base font-semibold">{f.label}</span>
             {f.room && (
-              <span className="text-xs opacity-80">{f.hint}</span>
+              <span className="text-sm font-semibold opacity-90">{f.hint} →</span>
             )}
           </div>
         </button>
@@ -39,12 +38,12 @@ const ScreenFloorSelection: React.FC<{ onNavigate: (id: string) => void }> = ({ 
 
     {/* Direction info */}
     <div className="transit-card">
-      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Direction</p>
+      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Direction</p>
       <div className="flex items-center gap-3">
-        <div className="transit-info-icon"><CornerDownLeft className="w-4 h-4" /></div>
+        <div className="transit-info-icon"><CornerDownLeft className="w-5 h-5" /></div>
         <div>
-          <p className="text-sm font-medium">Turn LEFT from elevator</p>
-          <p className="text-xs text-muted-foreground">Rooms 1001 - 1020 along corridor</p>
+          <p className="text-base font-bold">Turn LEFT from elevator</p>
+          <p className="text-sm text-muted-foreground">Rooms 1001 - 1020 along corridor</p>
         </div>
       </div>
     </div>
@@ -58,7 +57,7 @@ const ScreenFloorSelection: React.FC<{ onNavigate: (id: string) => void }> = ({ 
     </div>
 
     <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("tunnel")}>
-      Continue <ChevronRight className="w-4 h-4" />
+      Continue <ChevronRight className="w-5 h-5" />
     </button>
 
     <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("orientationHelp")}>

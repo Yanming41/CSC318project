@@ -1,32 +1,32 @@
 import React from "react";
-import { DoorOpen, Eye, Elevator, ArrowLeft, Shield } from "lucide-react";
+import { DoorOpen, Eye, ArrowUpDown, ArrowLeft, Shield } from "lucide-react";
 
 const ScreenEntranceWhy: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="text-lg font-semibold">Why Entrance A?</h2>
-      <p className="text-sm text-muted-foreground mt-0.5">Here's why we recommend this entrance</p>
+      <h2 className="transit-hero-text">Why Entrance A?</h2>
+      <p className="text-sm text-muted-foreground mt-1">Here's why we recommend this entrance</p>
     </div>
 
     <div className="transit-card space-y-0">
       <div className="transit-info-row">
-        <div className="transit-info-icon"><DoorOpen className="w-4 h-4" /></div>
+        <div className="transit-info-icon"><DoorOpen className="w-5 h-5" /></div>
         <div>
-          <p className="text-sm font-medium">Opens to main lobby</p>
+          <p className="text-base font-semibold">Opens to main lobby</p>
           <p className="text-xs text-muted-foreground">Building directory visible right away</p>
         </div>
       </div>
       <div className="transit-info-row">
-        <div className="transit-info-icon"><Elevator className="w-4 h-4" /></div>
+        <div className="transit-info-icon"><ArrowUpDown className="w-5 h-5" /></div>
         <div>
-          <p className="text-sm font-medium">Elevator & stairs nearby</p>
+          <p className="text-base font-semibold">Elevator & stairs nearby</p>
           <p className="text-xs text-muted-foreground">Quick access to all floors</p>
         </div>
       </div>
       <div className="transit-info-row">
-        <div className="transit-info-icon"><Eye className="w-4 h-4" /></div>
+        <div className="transit-info-icon"><Eye className="w-5 h-5" /></div>
         <div>
-          <p className="text-sm font-medium">Look for glass double doors</p>
+          <p className="text-base font-semibold">Look for glass double doors</p>
           <p className="text-xs text-muted-foreground">"Wilson Hall" sign above entrance</p>
         </div>
       </div>
@@ -41,15 +41,15 @@ const ScreenEntranceWhy: React.FC<{ onNavigate: (id: string) => void }> = ({ onN
     </div>
 
     <div className="transit-card">
-      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1.5">Other entrances</p>
-      <div className="space-y-1.5">
+      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Other entrances</p>
+      <div className="space-y-2">
         <div className="flex items-center gap-2">
           <span className="transit-badge-warning">B</span>
-          <p className="text-xs text-muted-foreground">Residence wing - needs keycard for classrooms</p>
+          <p className="text-sm text-muted-foreground">Residence wing - needs keycard for classrooms</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="transit-badge-danger">C</span>
-          <p className="text-xs text-muted-foreground">Service door - may be locked after 5 PM</p>
+          <p className="text-sm text-muted-foreground">Service door - may be locked after 5 PM</p>
         </div>
       </div>
     </div>

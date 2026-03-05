@@ -5,12 +5,12 @@ const ScreenTaskPack: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
   <div className="space-y-4">
     <div className="flex items-center gap-2 px-1">
       <ClipboardList className="w-5 h-5 text-[hsl(var(--primary))]" />
-      <h2 className="text-lg font-semibold">EES Task Pack</h2>
+      <h2 className="transit-hero-text">EES Task Pack</h2>
     </div>
     <p className="text-sm text-muted-foreground px-1">3 goal-based tasks for Expert Evaluation Session</p>
 
     <div className="transit-card">
-      <h3 className="font-semibold text-base mb-1">Task A - Abbreviation Resolution</h3>
+      <h3 className="font-bold text-lg mb-1">Task A - Abbreviation Resolution</h3>
       <p className="text-xs text-muted-foreground mb-2">Tests: DR1</p>
       <div className="border-l-2 border-[hsl(var(--primary))] pl-3">
         <p className="text-sm font-medium">Scenario:</p>
@@ -21,7 +21,7 @@ const ScreenTaskPack: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
     </div>
 
     <div className="transit-card">
-      <h3 className="font-semibold text-base mb-1">Task B - Entrance + Indoor</h3>
+      <h3 className="font-bold text-lg mb-1">Task B - Entrance + Indoor</h3>
       <p className="text-xs text-muted-foreground mb-2">Tests: DR2 + DR3</p>
       <div className="border-l-2 border-[hsl(var(--primary))] pl-3">
         <p className="text-sm font-medium">Scenario:</p>
@@ -32,7 +32,7 @@ const ScreenTaskPack: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
     </div>
 
     <div className="transit-card">
-      <h3 className="font-semibold text-base mb-1">Task C - Tunnel + Last Mile</h3>
+      <h3 className="font-bold text-lg mb-1">Task C - Tunnel + Last Mile</h3>
       <p className="text-xs text-muted-foreground mb-2">Tests: DR4 + DR5</p>
       <div className="border-l-2 border-[hsl(var(--primary))] pl-3">
         <p className="text-sm font-medium">Scenario:</p>
