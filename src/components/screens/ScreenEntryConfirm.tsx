@@ -1,52 +1,54 @@
 import React from "react";
+import { Navigation, ArrowUp, ArrowLeft, Stairs, ChevronRight } from "lucide-react";
 
 const ScreenEntryConfirm: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
-    <div className="wireframe-solid text-center">
-      <p className="text-xs text-muted-foreground">You entered via:</p>
-      <h2 className="font-sketch text-xl">🚪 Entrance A — Main Lobby</h2>
+    <div className="px-1">
+      <p className="text-xs text-muted-foreground">You entered via</p>
+      <h2 className="text-lg font-semibold">Entrance A - Main Lobby</h2>
     </div>
 
-    {/* Status */}
-    <div className="wireframe-progress justify-center">
-      <div className="wireframe-progress-dot active" />
-      <div className="wireframe-progress-dot" />
-      <div className="wireframe-progress-dot" />
-      <span className="text-xs ml-2">Step 1 of 3 major decisions</span>
-    </div>
-
-    {/* Indoor anchor */}
-    <div className="wireframe-box">
-      <h3 className="font-sketch text-lg">📍 You are at: Lobby / Directory</h3>
-      <div className="text-sm mt-2 space-y-1">
-        <p>• Building directory board is to your left</p>
-        <p>• Elevator ahead, stairs to the right</p>
-        <p>• Room 1017 → Floor 1</p>
+    {/* Lobby photo - shown directly */}
+    <div className="transit-img-placeholder">
+      <div className="text-center">
+        <Navigation className="w-8 h-8 mx-auto text-muted-foreground mb-1" />
+        <p className="text-xs text-muted-foreground">Lobby interior - you are here</p>
       </div>
     </div>
 
-    {/* Indoor image placeholder */}
-    <div className="wireframe-box text-center py-6">
-      <div className="text-4xl">🏢</div>
-      <p className="text-xs text-muted-foreground">[Photo of lobby entrance interior]</p>
+    {/* Indoor orientation cues */}
+    <div className="transit-card space-y-0">
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><ArrowUp className="w-4 h-4" /></div>
+        <div>
+          <p className="text-sm font-medium">Directory board on your left</p>
+        </div>
+      </div>
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><Stairs className="w-4 h-4" /></div>
+        <div>
+          <p className="text-sm font-medium">Elevator ahead, stairs to the right</p>
+        </div>
+      </div>
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><Navigation className="w-4 h-4" /></div>
+        <div>
+          <p className="text-sm font-medium">Room 1017 is on Floor 1</p>
+        </div>
+      </div>
     </div>
 
-    {/* Next decisions */}
-    <div className="space-y-2">
-      <p className="text-xs font-bold">Next: Choose your floor</p>
-      <button className="wireframe-button w-full" onClick={() => onNavigate("floorSelection")}>
-        Go to Floor 1 →
-      </button>
-      <button className="wireframe-button-outline w-full" onClick={() => onNavigate("floorSelection")}>
-        Go to Basement →
-      </button>
-      <button className="wireframe-button-outline w-full" onClick={() => onNavigate("floorSelection")}>
-        🛗 Take elevator / 🪜 Stairs
-      </button>
-    </div>
+    {/* Next action */}
+    <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("floorSelection")}>
+      Go to Floor 1 <ChevronRight className="w-4 h-4" />
+    </button>
 
-    <button className="wireframe-chip text-xs" onClick={() => onNavigate("entranceSelection")}>
-      ← Wrong entrance? Go back
+    <button className="transit-btn-outline w-full" onClick={() => onNavigate("floorSelection")}>
+      I need a different floor
+    </button>
+
+    <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("entranceSelection")}>
+      <ArrowLeft className="w-4 h-4" /> Wrong entrance? Go back
     </button>
   </div>
 );

@@ -14,8 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        hand: ["'Patrick Hand'", "cursive"],
-        sketch: ["'Caveat'", "cursive"],
+        sans: ["-apple-system", "BlinkMacSystemFont", "'SF Pro Display'", "'Segoe UI'", "Roboto", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,14 +49,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        wireframe: {
-          sketch: "hsl(var(--wireframe-sketch))",
-          annotation: "hsl(var(--wireframe-annotation))",
-          highlight: "hsl(var(--wireframe-highlight))",
-          success: "hsl(var(--wireframe-success))",
-          warning: "hsl(var(--wireframe-warning))",
-          danger: "hsl(var(--wireframe-danger))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

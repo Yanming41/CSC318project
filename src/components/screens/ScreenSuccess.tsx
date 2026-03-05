@@ -1,24 +1,31 @@
 import React, { useState } from "react";
+import { CheckCircle2, Home } from "lucide-react";
 
 const ScreenSuccess: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => {
   const [rating, setRating] = useState<number | null>(null);
 
   return (
     <div className="space-y-5">
-      <div className="text-center">
-        <div className="text-5xl mb-2">🎉</div>
-        <h2 className="font-sketch text-3xl">Arrived!</h2>
-        <p className="text-lg mt-1">WI 1017 — Wilson Hall</p>
+      {/* Success icon */}
+      <div className="text-center pt-4">
+        <div className="w-16 h-16 rounded-full bg-[hsl(145,60%,42%)] mx-auto flex items-center justify-center mb-3">
+          <CheckCircle2 className="w-8 h-8 text-white" />
+        </div>
+        <h2 className="text-2xl font-semibold">You've arrived!</h2>
+        <p className="text-base text-muted-foreground mt-1">WI 1017 - Wilson Hall</p>
       </div>
 
-      <div className="wireframe-solid text-center">
-        <p className="text-sm font-bold mb-3">How confident did you feel?</p>
-        <div className="flex justify-center gap-3">
+      {/* Confidence rating */}
+      <div className="transit-card text-center">
+        <p className="text-sm font-medium mb-3">How confident did you feel?</p>
+        <div className="flex justify-center gap-2">
           {[1, 2, 3, 4, 5].map((n) => (
             <button
               key={n}
-              className={`w-10 h-10 border-2 border-foreground rounded-full text-lg font-bold transition-all ${
-                rating === n ? "bg-foreground text-primary-foreground" : "hover:bg-secondary"
+              className={`w-11 h-11 rounded-full text-sm font-semibold transition-all ${
+                rating === n
+                  ? "bg-[hsl(174,62%,38%)] text-white"
+                  : "bg-[hsl(var(--secondary))] text-foreground hover:bg-[hsl(var(--muted))]"
               }`}
               onClick={() => setRating(n)}
             >
@@ -26,20 +33,18 @@ const ScreenSuccess: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavig
             </button>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground mt-2">1 = Not confident → 5 = Very confident</p>
+        <p className="text-xs text-muted-foreground mt-2">1 = Not confident  /  5 = Very confident</p>
       </div>
 
       {rating && (
-        <div className="wireframe-box text-center">
-          <p className="text-sm">Thanks! You rated: <strong>{rating}/5</strong></p>
+        <div className="transit-card text-center">
+          <p className="text-sm">Thanks! You rated: <span className="font-semibold">{rating}/5</span></p>
         </div>
       )}
 
-      <button className="wireframe-button w-full" onClick={() => onNavigate("home")}>
-        🏠 Start New Wayfinding
+      <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("home")}>
+        <Home className="w-4 h-4" /> New navigation
       </button>
-
-      <p className="wireframe-annotation text-center">Screen 13 · Success · Collect test data</p>
     </div>
   );
 };

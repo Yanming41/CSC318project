@@ -1,48 +1,83 @@
 import React from "react";
+import { DoorOpen, CheckCircle2, AlertTriangle, XCircle, HelpCircle, ArrowLeft } from "lucide-react";
+
+const entrances = [
+  {
+    label: "Entrance A",
+    sublabel: "Classroom Entrance",
+    desc: "Main lobby with directory",
+    badge: "Recommended",
+    badgeClass: "transit-badge-success",
+    Icon: CheckCircle2,
+  },
+  {
+    label: "Entrance B",
+    sublabel: "Residence Wing",
+    desc: "Student residence area",
+    badge: "Not for classes",
+    badgeClass: "transit-badge-warning",
+    Icon: AlertTriangle,
+  },
+  {
+    label: "Entrance C",
+    sublabel: "Service Door",
+    desc: "May be locked after 5 PM",
+    badge: "Restricted",
+    badgeClass: "transit-badge-danger",
+    Icon: XCircle,
+  },
+];
 
 const ScreenEntranceSelection: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
-    <h2 className="font-sketch text-xl text-center">🚪 Choose Your Entrance</h2>
-    <p className="text-xs text-muted-foreground text-center">Wilson Hall has 3 entrances</p>
-
-    {/* Simple building outline */}
-    <div className="wireframe-box text-center py-4">
-      <div className="border-2 border-foreground mx-auto w-48 h-32 relative">
-        <span className="absolute -top-3 left-4 bg-card px-1 text-xs font-bold">Wilson Hall</span>
-        <span className="absolute top-1/2 -left-3 bg-card px-1 text-[10px]">A</span>
-        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-card px-1 text-[10px]">B</span>
-        <span className="absolute top-1/2 -right-3 bg-card px-1 text-[10px]">C</span>
-      </div>
-      <p className="wireframe-annotation mt-2">[Building outline with entrance markers]</p>
+    <div className="px-1">
+      <h2 className="text-lg font-semibold">Choose your entrance</h2>
+      <p className="text-sm text-muted-foreground mt-0.5">Wilson Hall has 3 entrances</p>
     </div>
 
-    {/* Entrance cards */}
-    {[
-      { label: "A – Classroom Entrance", desc: "Main lobby, directory inside", tag: "✅ Recommended" },
-      { label: "B – Residence Entrance", desc: "Student residence wing", tag: "⚠ Not for classes" },
-      { label: "C – Loading / Service", desc: "Seasonal closure risk", tag: "❌ May be locked" },
-    ].map((e, i) => (
-      <button
-        key={i}
-        className="wireframe-card w-full text-left"
-        onClick={() => onNavigate("entryConfirm")}
-      >
-        <div className="flex justify-between items-start">
-          <div>
-            <p className="font-bold">{e.label}</p>
-            <p className="text-xs text-muted-foreground">{e.desc}</p>
-          </div>
-          <span className="text-[10px] whitespace-nowrap">{e.tag}</span>
-        </div>
-      </button>
-    ))}
+    {/* Building map with entrance pins */}
+    <div className="transit-card">
+      <div className="relative bg-[hsl(var(--secondary))] rounded-lg" style={{ height: 140 }}>
+        {/* Simplified building outline */}
+        <div className="absolute inset-4 border-2 border-[hsl(var(--muted-foreground))] rounded-md opacity-40" />
+        <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-muted-foreground">Wilson Hall</span>
+        {/* Entrance markers */}
+        <div className="absolute top-1/2 left-2 -translate-y-1/2 w-6 h-6 rounded-full bg-[hsl(145,60%,42%)] flex items-center justify-center text-white text-[10px] font-bold">A</div>
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[hsl(30,90%,55%)] flex items-center justify-center text-white text-[10px] font-bold">B</div>
+        <div className="absolute top-1/2 right-2 -translate-y-1/2 w-6 h-6 rounded-full bg-[hsl(0,72%,51%)] flex items-center justify-center text-white text-[10px] font-bold">C</div>
+      </div>
+    </div>
 
-    <button className="wireframe-chip text-xs" onClick={() => onNavigate("entranceWhy")}>
-      ❓ Why this entrance?
+    {/* Entrance options */}
+    <div className="space-y-2">
+      {entrances.map((e, i) => (
+        <button
+          key={i}
+          className="transit-card-interactive w-full text-left"
+          onClick={() => onNavigate("entryConfirm")}
+        >
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent))] flex items-center justify-center flex-shrink-0">
+              <DoorOpen className="w-5 h-5 text-[hsl(var(--accent-foreground))]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <p className="font-semibold text-sm">{e.label}</p>
+                <span className={e.badgeClass}>{e.badge}</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">{e.sublabel} - {e.desc}</p>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("entranceWhy")}>
+      <HelpCircle className="w-4 h-4" /> Why this entrance?
     </button>
 
-    <button className="wireframe-chip text-xs" onClick={() => onNavigate("resolution")}>
-      ← Back
+    <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("resolution")}>
+      <ArrowLeft className="w-4 h-4" /> Back
     </button>
   </div>
 );

@@ -1,41 +1,38 @@
 import React from "react";
+import { Hash, Compass } from "lucide-react";
 
 const ScreenLostIndoors: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
-    <div className="wireframe-box text-center">
-      <div className="text-3xl mb-2">😰</div>
-      <h2 className="font-sketch text-xl">Lost Indoors?</h2>
-      <p className="text-sm text-muted-foreground mt-1">Let's get you re-oriented</p>
+    <div className="px-1">
+      <h2 className="text-lg font-semibold">Lost indoors?</h2>
+      <p className="text-sm text-muted-foreground mt-0.5">Let's get you re-oriented</p>
     </div>
 
-    <div className="wireframe-solid">
-      <p className="text-sm font-bold">🔙 Return to anchor point:</p>
-      <p className="text-sm mt-1">Head back to the <strong>lobby directory</strong> (main entrance area)</p>
-      <p className="text-xs text-muted-foreground mt-1">Look for elevator/stairwell — lobby is usually at ground level</p>
-    </div>
-
-    <div className="wireframe-box">
-      <p className="text-sm font-bold">🔢 Check your surroundings:</p>
-      <ul className="text-sm mt-1 space-y-1 list-disc list-inside">
-        <li>What room numbers do you see? (e.g., 2xxx = Floor 2)</li>
-        <li>Can you find a floor sign near stairs/elevator?</li>
-        <li>Is there a directory or map on the wall?</li>
+    <div className="transit-card">
+      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Check your surroundings</p>
+      <ul className="space-y-1.5 text-sm">
+        <li className="flex items-start gap-2">
+          <Hash className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+          What room numbers do you see? (2xxx = Floor 2)
+        </li>
+        <li className="flex items-start gap-2">
+          <Compass className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+          Look for a floor sign near stairs/elevator
+        </li>
       </ul>
     </div>
 
     <div className="space-y-2">
-      <button className="wireframe-button w-full" onClick={() => onNavigate("entryConfirm")}>
-        🏛 Go to lobby / Re-orient
+      <button className="transit-btn w-full" onClick={() => onNavigate("entryConfirm")}>
+        Go to lobby / Re-orient
       </button>
-      <button className="wireframe-button-outline w-full" onClick={() => onNavigate("floorSelection")}>
-        🔢 I know my floor now
+      <button className="transit-btn-outline w-full" onClick={() => onNavigate("floorSelection")}>
+        I know my floor now
       </button>
-      <button className="wireframe-button-outline w-full" onClick={() => onNavigate("orientationHelp")}>
-        🧭 Orientation help
+      <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("orientationHelp")}>
+        <Compass className="w-4 h-4" /> Orientation help
       </button>
     </div>
-
-    <p className="wireframe-annotation text-center">Error recovery — wizard can swap here</p>
   </div>
 );
 

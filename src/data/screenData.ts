@@ -1,6 +1,3 @@
-import React from "react";
-
-// Screen data types
 export interface ScreenData {
   id: string;
   title: string;
@@ -17,13 +14,13 @@ export interface ScreenData {
 export const SCREENS: Record<string, ScreenData> = {
   home: {
     id: "home",
-    title: "Home / Quick Start",
+    title: "Home",
     screenNumber: 1,
     designReqs: ["DR1"],
     jobStories: ["JS1"],
     facilitator: {
-      goal: "User enters building code + room number to start wayfinding.",
-      say: "You need to get to class. You only know the code 'WI 1017'.",
+      goal: "User enters building code + room number or selects from map.",
+      say: "You need to get to class. Your timetable shows 'WI 1017'.",
       dontSay: "Don't explain what WI stands for or where to type it.",
     },
   },
@@ -34,135 +31,111 @@ export const SCREENS: Record<string, ScreenData> = {
     designReqs: ["DR1"],
     jobStories: ["JS1"],
     facilitator: {
-      goal: "User confirms the resolved building is correct.",
+      goal: "System auto-resolves abbreviation. User confirms building.",
       say: "The system found a match. Is this the right building?",
       dontSay: "Don't confirm the building for them.",
     },
   },
   ambiguous: {
     id: "ambiguous",
-    title: "Ambiguous Abbreviation",
+    title: "Multiple Matches",
     screenNumber: 3,
     designReqs: ["DR1"],
     jobStories: ["JS1"],
     facilitator: {
-      goal: "User disambiguates between multiple building matches.",
-      say: "The system found multiple matches for that code.",
+      goal: "User picks correct building from multiple matches.",
+      say: "There are multiple matches for that code.",
       dontSay: "Don't tell them which one to pick.",
     },
   },
   entranceSelection: {
     id: "entranceSelection",
-    title: "Entrance Selection",
+    title: "Choose Entrance",
     screenNumber: 4,
     designReqs: ["DR2"],
     jobStories: ["JS2"],
     facilitator: {
-      goal: "User selects the correct entrance for classrooms.",
+      goal: "User selects correct entrance using visual map.",
       say: "You've arrived at the building. Which entrance will you use?",
       dontSay: "Don't point out which entrance is correct.",
     },
   },
-  entranceWhy: {
-    id: "entranceWhy",
-    title: "Why This Entrance? (Overlay)",
-    screenNumber: 5,
-    designReqs: ["DR2"],
-    jobStories: ["JS2"],
-    facilitator: {
-      goal: "User learns why an entrance is recommended.",
-      say: "You can see more info about an entrance.",
-      dontSay: "Don't read the explanation aloud.",
-    },
-  },
   entryConfirm: {
     id: "entryConfirm",
-    title: "Entry Confirmation + Indoor Start",
-    screenNumber: 6,
+    title: "You're Inside",
+    screenNumber: 5,
     designReqs: ["DR3"],
     jobStories: ["JS3"],
     facilitator: {
-      goal: "User confirms entry and begins indoor orientation.",
+      goal: "User sees lobby photo and indoor start info directly.",
       say: "You just entered the building. Where do you go next?",
       dontSay: "Don't tell them which floor or direction.",
     },
   },
   floorSelection: {
     id: "floorSelection",
-    title: "Floor Selection + Direction",
-    screenNumber: 7,
+    title: "Floor & Direction",
+    screenNumber: 6,
     designReqs: ["DR3"],
     jobStories: ["JS3"],
     facilitator: {
-      goal: "User selects the correct floor and corridor direction.",
+      goal: "User selects floor and sees corridor direction.",
       say: "You need to decide which floor to go to.",
       dontSay: "Don't give the floor number.",
     },
   },
-  orientationHelp: {
-    id: "orientationHelp",
-    title: "Orientation Help (Overlay)",
-    screenNumber: 8,
-    designReqs: ["DR3"],
-    jobStories: ["JS3"],
-    facilitator: {
-      goal: "User uses landmark cues to orient themselves.",
-      say: "Not sure? You can get orientation help.",
-      dontSay: "Don't describe the landmarks.",
-    },
-  },
   tunnel: {
     id: "tunnel",
-    title: "Tunnel / Connector Segment",
-    screenNumber: 9,
+    title: "Connector",
+    screenNumber: 7,
     designReqs: ["DR4"],
     jobStories: ["JS4"],
     facilitator: {
-      goal: "User navigates through a tunnel/connector with reassurance.",
+      goal: "User navigates connector with reassurance cues.",
       say: "Your route goes through a connector. Continue when ready.",
       dontSay: "Don't minimize their anxiety or rush them.",
     },
   },
   tunnelAlt: {
     id: "tunnelAlt",
-    title: "Safer Alternative Route",
-    screenNumber: 10,
+    title: "Alternative Route",
+    screenNumber: 8,
     designReqs: ["DR4"],
     jobStories: ["JS4"],
     facilitator: {
-      goal: "User can opt for an above-ground route to avoid tunnels.",
+      goal: "User sees above-ground alternative.",
       say: "There's an alternative route available.",
       dontSay: "Don't recommend one route over another.",
     },
   },
   lastMile: {
     id: "lastMile",
-    title: "Last-Meter Room Confirmation",
-    screenNumber: 11,
+    title: "Find Your Room",
+    screenNumber: 9,
     designReqs: ["DR5"],
     jobStories: ["JS5"],
     facilitator: {
-      goal: "User locates the exact room door.",
-      say: "You're almost there. Find the room.",
+      goal: "User follows 5 checkpoints with inline images to find room.",
+      say: "You're almost there. Follow the checkpoints.",
       dontSay: "Don't tell them which side of the hall.",
     },
   },
   cantFind: {
     id: "cantFind",
-    title: "Can't Find Room (Recovery)",
-    screenNumber: 12,
+    title: "Can't Find Room",
+    screenNumber: 10,
     designReqs: ["DR5"],
     jobStories: ["JS5"],
     facilitator: {
-      goal: "User recovers from being lost near the room.",
+      goal: "User uses recovery options when lost near room.",
       say: "What would you do if you can't find the room?",
       dontSay: "Don't give recovery steps.",
     },
   },
   success: {
     id: "success",
-    title: "Success / Arrived",
-    screenNumber: 13,
+    title: "Arrived",
+    screenNumber: 11,
     designReqs: ["DR5"],
     jobStories: ["JS5"],
     facilitator: {
@@ -173,26 +146,50 @@ export const SCREENS: Record<string, ScreenData> = {
   },
   wrongEntrance: {
     id: "wrongEntrance",
-    title: "Wrong Entrance (Error Recovery)",
-    screenNumber: 14,
+    title: "Wrong Entrance",
+    screenNumber: 12,
     designReqs: ["DR2", "DR3"],
     jobStories: ["JS2", "JS3"],
     facilitator: {
-      goal: "User recovers from entering wrong entrance.",
+      goal: "User recovers from wrong entrance choice.",
       say: "Something doesn't look right. What do you do?",
       dontSay: "Don't tell them they're in the wrong place.",
     },
   },
   lostIndoors: {
     id: "lostIndoors",
-    title: "Lost Indoors (Error Recovery)",
+    title: "Lost Indoors",
+    screenNumber: 13,
+    designReqs: ["DR3"],
+    jobStories: ["JS3"],
+    facilitator: {
+      goal: "User re-orients using current location cues.",
+      say: "You seem lost. What would you do?",
+      dontSay: "Don't direct them back.",
+    },
+  },
+  entranceWhy: {
+    id: "entranceWhy",
+    title: "Why This Entrance",
+    screenNumber: 14,
+    designReqs: ["DR2"],
+    jobStories: ["JS2"],
+    facilitator: {
+      goal: "User understands entrance recommendation rationale.",
+      say: "You can see more info about an entrance.",
+      dontSay: "Don't read the explanation aloud.",
+    },
+  },
+  orientationHelp: {
+    id: "orientationHelp",
+    title: "Orientation Help",
     screenNumber: 15,
     designReqs: ["DR3"],
     jobStories: ["JS3"],
     facilitator: {
-      goal: "User uses anchor point to re-orient.",
-      say: "You seem lost. What would you do?",
-      dontSay: "Don't direct them back.",
+      goal: "User uses landmark cues to orient.",
+      say: "Not sure? You can get orientation help.",
+      dontSay: "Don't describe the landmarks.",
     },
   },
   taskPack: {
@@ -209,7 +206,6 @@ export const SCREENS: Record<string, ScreenData> = {
   },
 };
 
-// The main navigation flow (happy path)
 export const HAPPY_PATH = [
   "home",
   "resolution",
@@ -221,14 +217,55 @@ export const HAPPY_PATH = [
   "success",
 ];
 
-// Wizard jump targets
 export const WIZARD_JUMPS = [
-  { label: "→ Ambiguous Abbreviation", target: "ambiguous" },
-  { label: "→ Wrong Entrance", target: "wrongEntrance" },
-  { label: "→ Safer Tunnel Route", target: "tunnelAlt" },
-  { label: "→ Can't Find Room", target: "cantFind" },
-  { label: "→ Lost Indoors", target: "lostIndoors" },
-  { label: "→ Entrance Why Overlay", target: "entranceWhy" },
-  { label: "→ Orientation Help", target: "orientationHelp" },
-  { label: "→ EES Task Pack", target: "taskPack" },
+  { label: "Multiple Matches", target: "ambiguous" },
+  { label: "Wrong Entrance", target: "wrongEntrance" },
+  { label: "Alt Route", target: "tunnelAlt" },
+  { label: "Can't Find Room", target: "cantFind" },
+  { label: "Lost Indoors", target: "lostIndoors" },
+  { label: "Why Entrance?", target: "entranceWhy" },
+  { label: "Orientation", target: "orientationHelp" },
+  { label: "Task Pack", target: "taskPack" },
 ];
+
+export const NAV_STAGES = [
+  { id: 1, label: "Building" },
+  { id: 2, label: "Entrance" },
+  { id: 3, label: "Floor" },
+  { id: 4, label: "Route" },
+  { id: 5, label: "Room" },
+];
+
+export const SCREEN_STAGE: Record<string, number> = {
+  home: 1,
+  resolution: 1,
+  ambiguous: 1,
+  entranceSelection: 2,
+  entranceWhy: 2,
+  entryConfirm: 3,
+  floorSelection: 3,
+  orientationHelp: 3,
+  tunnel: 4,
+  tunnelAlt: 4,
+  lastMile: 5,
+  cantFind: 5,
+  success: 5,
+  wrongEntrance: 2,
+  lostIndoors: 3,
+};
+
+export const BUILDING_DB: Record<string, { name: string; address: string; area: string }[]> = {
+  WI: [{ name: "Wilson Hall", address: "73 St. George St", area: "Central Campus" }],
+  SS: [{ name: "Sidney Smith Hall", address: "100 St. George St", area: "Central Campus" }],
+  BA: [
+    { name: "Bahen Centre", address: "40 St. George St", area: "Central Campus" },
+    { name: "Bancroft Building (hypothetical)", address: "21 Sussex Ave", area: "North Campus" },
+  ],
+  UC: [{ name: "University College", address: "15 King's College Cir", area: "Central Campus" }],
+  MP: [{ name: "McLennan Physical Labs", address: "60 St. George St", area: "Central Campus" }],
+  MY: [{ name: "Myhal Centre", address: "55 St. George St", area: "Central Campus" }],
+  SF: [{ name: "Sandford Fleming Building", address: "10 King's College Rd", area: "Central Campus" }],
+  GB: [{ name: "Galbraith Building", address: "35 St. George St", area: "Central Campus" }],
+  RW: [{ name: "Robarts Library", address: "130 St. George St", area: "Central Campus" }],
+  EX: [{ name: "Exam Centre", address: "255 McCaul St", area: "West Campus" }],
+};

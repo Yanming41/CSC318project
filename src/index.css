@@ -2,56 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap');
-
 @layer base {
   :root {
-    --background: 0 0% 97%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 96%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 220 15% 15%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 97%;
+    --primary: 174 62% 38%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 90%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 210 10% 94%;
+    --secondary-foreground: 220 15% 25%;
 
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 10% 92%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 0 0% 85%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 174 50% 94%;
+    --accent-foreground: 174 62% 28%;
 
-    --destructive: 0 0% 35%;
-    --destructive-foreground: 0 0% 97%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 0 0% 10%;
+    --border: 220 10% 88%;
+    --input: 220 10% 82%;
+    --ring: 174 62% 38%;
 
-    --radius: 0.25rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 26%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 80%;
-    --sidebar-ring: 0 0% 60%;
+    --sidebar-primary: 174 62% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 174 50% 94%;
+    --sidebar-accent-foreground: 174 62% 28%;
+    --sidebar-border: 220 10% 88%;
+    --sidebar-ring: 174 62% 38%;
 
-    /* Wireframe-specific tokens */
-    --wireframe-sketch: 0 0% 20%;
-    --wireframe-annotation: 0 0% 55%;
-    --wireframe-highlight: 45 80% 75%;
-    --wireframe-success: 120 30% 45%;
-    --wireframe-warning: 35 80% 55%;
-    --wireframe-danger: 0 60% 50%;
+    --transit-teal: 174 62% 38%;
+    --transit-teal-light: 174 50% 94%;
+    --transit-green: 145 60% 42%;
+    --transit-orange: 30 90% 55%;
+    --transit-red: 0 72% 51%;
   }
 }
 
@@ -61,133 +57,197 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Patrick Hand', cursive;
-    font-size: 16px;
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Caveat', cursive;
-    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
   }
 }
 
 @layer components {
-  .wireframe-box {
-    @apply border-2 border-dashed border-foreground rounded-sm p-3;
+  /* ===== Transit-style Components ===== */
+
+  .transit-card {
+    @apply bg-card rounded-xl p-4 shadow-sm;
   }
 
-  .wireframe-solid {
-    @apply border-2 border-solid border-foreground rounded-sm p-3;
+  .transit-card-interactive {
+    @apply bg-card rounded-xl p-4 shadow-sm cursor-pointer transition-all active:scale-[0.98];
   }
 
-  .wireframe-button {
-    @apply border-2 border-solid border-foreground rounded-sm px-4 py-2 bg-foreground text-primary-foreground font-bold cursor-pointer transition-all;
-    font-family: 'Patrick Hand', cursive;
+  .transit-card-interactive:hover {
+    @apply shadow-md;
   }
 
-  .wireframe-button:hover {
-    @apply opacity-80;
+  .transit-btn {
+    @apply rounded-xl px-5 py-3 font-semibold text-base cursor-pointer transition-all active:scale-[0.97];
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 
-  .wireframe-button-outline {
-    @apply border-2 border-solid border-foreground rounded-sm px-4 py-2 bg-background text-foreground font-bold cursor-pointer transition-all;
-    font-family: 'Patrick Hand', cursive;
+  .transit-btn:hover {
+    opacity: 0.9;
   }
 
-  .wireframe-button-outline:hover {
-    @apply bg-secondary;
+  .transit-btn-outline {
+    @apply rounded-xl px-5 py-3 font-semibold text-base cursor-pointer transition-all border-2 active:scale-[0.97];
+    border-color: hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
   }
 
-  .wireframe-chip {
-    @apply border border-solid border-foreground rounded-full px-3 py-1 text-sm cursor-pointer transition-all bg-background;
-    font-family: 'Patrick Hand', cursive;
+  .transit-btn-outline:hover {
+    background: hsl(var(--secondary));
   }
 
-  .wireframe-chip:hover {
-    @apply bg-foreground text-primary-foreground;
+  .transit-btn-ghost {
+    @apply rounded-lg px-4 py-2 font-medium text-sm cursor-pointer transition-all;
+    color: hsl(var(--primary));
+    background: transparent;
   }
 
-  .wireframe-input {
-    @apply border-2 border-solid border-foreground rounded-sm px-3 py-2 bg-background text-foreground w-full;
-    font-family: 'Patrick Hand', cursive;
-    font-size: 18px;
+  .transit-btn-ghost:hover {
+    background: hsl(var(--accent));
   }
 
-  .wireframe-input::placeholder {
+  .transit-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all cursor-pointer;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .transit-chip:hover {
+    background: hsl(var(--muted));
+  }
+
+  .transit-chip.active {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .transit-input {
+    @apply rounded-xl px-4 py-3 bg-card text-foreground w-full text-base outline-none transition-all border-2;
+    border-color: hsl(var(--border));
+  }
+
+  .transit-input:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
+  }
+
+  .transit-input::placeholder {
     @apply text-muted-foreground;
   }
 
-  .wireframe-card {
-    @apply border-2 border-solid border-foreground rounded-sm p-4 bg-card cursor-pointer transition-all;
+  /* Image placeholder for prototype */
+  .transit-img-placeholder {
+    @apply rounded-xl overflow-hidden flex items-center justify-center;
+    background: hsl(var(--secondary));
+    aspect-ratio: 16/9;
   }
 
-  .wireframe-card:hover {
-    @apply bg-secondary;
+  .transit-img-placeholder svg {
+    width: 48px;
+    height: 48px;
+    color: hsl(var(--muted-foreground));
   }
 
-  .wireframe-card.selected {
-    @apply bg-foreground text-primary-foreground;
+  /* Progress bar (5 checkpoints) */
+  .transit-progress {
+    @apply flex items-center gap-0;
   }
 
-  .wireframe-overlay {
-    @apply fixed inset-0 bg-foreground/50 flex items-center justify-center z-50;
+  .transit-progress-step {
+    @apply flex-1 h-1 rounded-full transition-all;
+    background: hsl(var(--border));
   }
 
-  .wireframe-overlay-content {
-    @apply bg-card border-2 border-solid border-foreground rounded-sm p-6 max-w-md w-full mx-4;
+  .transit-progress-step + .transit-progress-step {
+    @apply ml-1;
   }
 
-  .wireframe-status {
-    @apply border border-solid border-foreground rounded-full px-3 py-1 text-xs inline-flex items-center gap-1;
-    font-family: 'Patrick Hand', cursive;
+  .transit-progress-step.active {
+    background: hsl(var(--primary));
   }
 
-  .wireframe-progress {
-    @apply flex items-center gap-2;
+  .transit-progress-step.completed {
+    background: hsl(var(--transit-green));
   }
 
-  .wireframe-progress-dot {
-    @apply w-3 h-3 rounded-full border-2 border-foreground;
+  /* Badge / Tag */
+  .transit-badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
   }
 
-  .wireframe-progress-dot.active {
-    @apply bg-foreground;
+  .transit-badge-success {
+    background: hsl(var(--transit-green) / 0.12);
+    color: hsl(var(--transit-green));
   }
 
-  .wireframe-annotation {
-    @apply text-xs italic;
-    color: hsl(var(--wireframe-annotation));
-    font-family: 'Caveat', cursive;
+  .transit-badge-warning {
+    background: hsl(var(--transit-orange) / 0.12);
+    color: hsl(var(--transit-orange));
   }
 
-  .facilitator-panel {
-    @apply border-2 border-dashed rounded-sm p-4 mt-4;
-    border-color: hsl(var(--wireframe-warning));
-    background: hsl(var(--wireframe-highlight) / 0.15);
+  .transit-badge-danger {
+    background: hsl(var(--transit-red) / 0.12);
+    color: hsl(var(--transit-red));
   }
 
-  .wizard-panel {
-    @apply border-2 border-dashed rounded-sm p-4 mt-4;
-    border-color: hsl(var(--wireframe-danger));
-    background: hsl(var(--wireframe-danger) / 0.05);
+  /* Info row */
+  .transit-info-row {
+    @apply flex items-center gap-3 py-2.5;
   }
 
+  .transit-info-row + .transit-info-row {
+    @apply border-t;
+    border-color: hsl(var(--border));
+  }
+
+  .transit-info-icon {
+    @apply w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm;
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  /* Screen container (mobile frame) */
   .screen-container {
-    @apply max-w-sm mx-auto bg-card border-2 border-solid border-foreground rounded-sm min-h-[600px] relative overflow-hidden;
-    box-shadow: 4px 4px 0px hsl(var(--foreground));
+    @apply max-w-sm mx-auto bg-background rounded-3xl min-h-[640px] relative overflow-hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
   }
 
   .screen-header {
-    @apply border-b-2 border-solid border-foreground p-3 flex items-center justify-between;
+    @apply px-4 pt-3 pb-2 flex items-center justify-between;
+    background: hsl(var(--card));
   }
 
   .screen-body {
-    @apply p-4;
+    @apply px-4 pb-24;
   }
 
-  .screen-footer {
-    @apply border-t-2 border-solid border-foreground p-3 absolute bottom-0 left-0 right-0;
+  /* Bottom nav / action area */
+  .screen-bottom {
+    @apply absolute bottom-0 left-0 right-0 p-4;
+    background: linear-gradient(transparent, hsl(var(--background)) 30%);
+  }
+
+  /* Facilitator panel */
+  .facilitator-panel {
+    @apply rounded-xl p-4 mt-4 border-2 border-dashed;
+    border-color: hsl(var(--transit-orange));
+    background: hsl(var(--transit-orange) / 0.06);
+  }
+
+  /* Wizard panel */
+  .wizard-panel {
+    @apply rounded-xl p-4 mt-4 border-2 border-dashed;
+    border-color: hsl(var(--transit-red) / 0.5);
+    background: hsl(var(--transit-red) / 0.04);
   }
 
   /* Print mode */
@@ -199,10 +259,11 @@
     .screen-container {
       page-break-after: always;
       box-shadow: none;
-      border: 2px solid black;
+      border: 1px solid #ccc;
       min-height: auto;
       margin: 0;
       max-width: 100%;
+      border-radius: 0;
     }
 
     body {

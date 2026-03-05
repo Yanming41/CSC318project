@@ -6,46 +6,40 @@ interface WizardPanelProps {
   currentScreen: string;
 }
 
-const WizardPanel: React.FC<WizardPanelProps> = ({ onNavigate, currentScreen }) => {
-  const currentIdx = HAPPY_PATH.indexOf(currentScreen);
+const WizardPanel: React.FC<WizardPanelProps> = ({ onNavigate, currentScreen }) => (
+  <div className="wizard-panel">
+    <h3 className="text-base font-semibold mb-2">Wizard Controls</h3>
 
-  return (
-    <div className="wizard-panel">
-      <h3 className="font-sketch text-lg mb-2">🧙 Wizard Controls</h3>
-
-      {/* Happy path navigation */}
-      <div className="mb-3">
-        <p className="text-xs font-bold mb-1">Happy Path:</p>
-        <div className="flex flex-wrap gap-1">
-          {HAPPY_PATH.map((id) => (
-            <button
-              key={id}
-              className={`wireframe-chip text-[10px] ${currentScreen === id ? "bg-foreground text-primary-foreground" : ""}`}
-              onClick={() => onNavigate(id)}
-            >
-              {SCREENS[id].screenNumber}. {SCREENS[id].title.split("/")[0].trim().slice(0, 12)}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Jump targets */}
-      <div>
-        <p className="text-xs font-bold mb-1">Jump to Alt/Error States:</p>
-        <div className="flex flex-wrap gap-1">
-          {WIZARD_JUMPS.map((jump) => (
-            <button
-              key={jump.target}
-              className={`wireframe-chip text-[10px] ${currentScreen === jump.target ? "bg-foreground text-primary-foreground" : ""}`}
-              onClick={() => onNavigate(jump.target)}
-            >
-              {jump.label}
-            </button>
-          ))}
-        </div>
+    <div className="mb-3">
+      <p className="text-xs font-semibold mb-1.5">Happy Path:</p>
+      <div className="flex flex-wrap gap-1">
+        {HAPPY_PATH.map((id) => (
+          <button
+            key={id}
+            className={`transit-chip text-[10px] ${currentScreen === id ? "active" : ""}`}
+            onClick={() => onNavigate(id)}
+          >
+            {SCREENS[id].screenNumber}. {SCREENS[id].title.slice(0, 14)}
+          </button>
+        ))}
       </div>
     </div>
-  );
-};
+
+    <div>
+      <p className="text-xs font-semibold mb-1.5">Alt / Error States:</p>
+      <div className="flex flex-wrap gap-1">
+        {WIZARD_JUMPS.map((jump) => (
+          <button
+            key={jump.target}
+            className={`transit-chip text-[10px] ${currentScreen === jump.target ? "active" : ""}`}
+            onClick={() => onNavigate(jump.target)}
+          >
+            {jump.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 export default WizardPanel;

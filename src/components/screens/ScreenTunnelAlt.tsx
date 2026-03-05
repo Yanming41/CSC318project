@@ -1,33 +1,46 @@
 import React from "react";
+import { Sun, Timer, ChevronRight, ArrowLeft } from "lucide-react";
 
 const ScreenTunnelAlt: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
-    <h2 className="font-sketch text-xl text-center">🌤 Above-Ground Alternative</h2>
+    <div className="px-1">
+      <h2 className="text-lg font-semibold">Above-ground route</h2>
+      <p className="text-sm text-muted-foreground mt-0.5">Walk outside instead of through the connector</p>
+    </div>
 
-    <div className="wireframe-solid">
-      <p className="text-sm mb-2">Instead of the tunnel, you can walk outside:</p>
-      <div className="space-y-1 text-sm">
-        <p>1. Exit building through Entrance A</p>
-        <p>2. Walk along St. George St (~3 min)</p>
-        <p>3. Re-enter through the next building's main entrance</p>
+    <div className="transit-card space-y-0">
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><span className="text-sm font-bold">1</span></div>
+        <p className="text-sm">Exit building through Entrance A</p>
+      </div>
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><span className="text-sm font-bold">2</span></div>
+        <p className="text-sm">Walk along St. George St (~3 min)</p>
+      </div>
+      <div className="transit-info-row">
+        <div className="transit-info-icon"><span className="text-sm font-bold">3</span></div>
+        <p className="text-sm">Re-enter through next building's main entrance</p>
       </div>
     </div>
 
-    <div className="wireframe-box text-center">
-      <p className="font-bold text-sm">⏱ +2 min vs tunnel</p>
-      <p className="text-xs text-muted-foreground">Outdoor, well-lit, wider path</p>
+    <div className="transit-card flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <Timer className="w-4 h-4 text-muted-foreground" />
+        <span className="text-sm font-medium">+2 min vs connector</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <Sun className="w-4 h-4 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">Outdoor, well-lit</span>
+      </div>
     </div>
 
-    <div className="space-y-2">
-      <button className="wireframe-button w-full" onClick={() => onNavigate("lastMile")}>
-        Take this route →
-      </button>
-      <button className="wireframe-button-outline w-full" onClick={() => onNavigate("tunnel")}>
-        ← Go back to tunnel route
-      </button>
-    </div>
+    <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("lastMile")}>
+      Take this route <ChevronRight className="w-4 h-4" />
+    </button>
 
-    <p className="wireframe-annotation text-center">Alt state for DR4 — wizard swap</p>
+    <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("tunnel")}>
+      <ArrowLeft className="w-4 h-4" /> Back to connector route
+    </button>
   </div>
 );
 
