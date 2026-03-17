@@ -37,14 +37,13 @@ const ScreenEntranceSelection: React.FC<{ onNavigate: (id: string) => void }> = 
 
     {/* Building map with entrance pins */}
     <div className="transit-card">
-      <div className="relative bg-[hsl(var(--secondary))] rounded-xl" style={{ height: 140 }}>
-        {/* Simplified building outline */}
-        <div className="absolute inset-4 border-2 border-[hsl(var(--muted-foreground))] rounded-lg opacity-40" />
-        <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-muted-foreground">Wilson Hall</span>
+      <div className="relative rounded-xl overflow-hidden" style={{ height: 140 }}>
+        <img src="/CSC318project/WI.jpg" alt="Wilson Hall map" className="w-full h-full object-cover" />
+        <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white drop-shadow">Wilson Hall</span>
         {/* Entrance markers */}
-        <div className="absolute top-1/2 left-2 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(152,72%,40%)] flex items-center justify-center text-white text-xs font-bold shadow-md">A</div>
+        <div className="absolute top-1/2 left-20 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(152,72%,40%)] flex items-center justify-center text-white text-xs font-bold shadow-md">A</div>
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[hsl(28,95%,52%)] flex items-center justify-center text-white text-xs font-bold shadow-md">B</div>
-        <div className="absolute top-1/2 right-2 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(4,80%,52%)] flex items-center justify-center text-white text-xs font-bold shadow-md">C</div>
+        <div className="absolute top-1/2 right-14 -translate-y-1/2 w-7 h-7 rounded-full bg-[hsl(4,80%,52%)] flex items-center justify-center text-white text-xs font-bold shadow-md">C</div>
       </div>
     </div>
 
