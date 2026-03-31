@@ -10,19 +10,21 @@ const ScreenEntryConfirm: React.FC<{ onNavigate: (id: string) => void }> = ({ on
 
     {/* Lobby photo - shown directly */}
     <div className="transit-img-placeholder">
-      <div className="text-center">
-        <Navigation className="w-8 h-8 mx-auto text-muted-foreground mb-1" />
-        <p className="text-xs text-muted-foreground">Lobby interior - you are here</p>
-      </div>
+      <img src="/CSC318project/Alobby.jpg" alt="Lobby interior" className="w-full h-full object-cover" />
     </div>
 
     {/* Key destination banner */}
-    <div className="transit-action-banner">
-      <Navigation className="w-6 h-6" />
-      <div>
-        <span className="banner-text">Room 1017</span>
-        <span className="text-sm opacity-80 ml-2">• Floor 1</span>
+    <div
+      className="transit-card-interactive flex items-center gap-3"
+      onClick={() => onNavigate("floorSelection")}
+      style={{ background: "hsl(var(--primary))" }}
+    >
+      <Navigation className="w-6 h-6 text-white" />
+      <div className="flex-1">
+        <span className="text-lg font-bold text-white">Room 500U</span>
+        <span className="text-sm text-white opacity-80 ml-2">• Basement</span>
       </div>
+      <span className="text-xs text-white opacity-70">Go to confirm →</span>
     </div>
 
     {/* Indoor orientation cues */}
@@ -30,25 +32,25 @@ const ScreenEntryConfirm: React.FC<{ onNavigate: (id: string) => void }> = ({ on
       <div className="transit-info-row">
         <div className="transit-info-icon"><ArrowUp className="w-5 h-5" /></div>
         <div>
-          <p className="text-base font-semibold">Directory board on your left</p>
+          <p className="text-base font-semibold">Directory board on your right</p>
         </div>
       </div>
       <div className="transit-info-row">
         <div className="transit-info-icon"><Footprints className="w-5 h-5" /></div>
         <div>
-          <p className="text-base font-semibold">Elevator ahead, stairs to the right</p>
+          <p className="text-base font-semibold">Stairs ahead, elevators to the left</p>
         </div>
       </div>
     </div>
 
     {/* Next action */}
-    <button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("floorSelection")}>
-      Go to Floor 1 <ChevronRight className="w-5 h-5" />
-    </button>
+    {/*<button className="transit-btn w-full flex items-center justify-center gap-2" onClick={() => onNavigate("floorSelection")}>*/}
+    {/*  Go to Floor 1 <ChevronRight className="w-5 h-5" />*/}
+    {/*</button>*/}
 
-    <button className="transit-btn-outline w-full" onClick={() => onNavigate("floorSelection")}>
-      I need a different floor
-    </button>
+    {/*<button className="transit-btn-outline w-full" onClick={() => onNavigate("floorSelection")}>*/}
+    {/*  I need a different floor*/}
+    {/*</button>*/}
 
     <button className="transit-btn-ghost w-full flex items-center justify-center gap-1" onClick={() => onNavigate("entranceSelection")}>
       <ArrowLeft className="w-4 h-4" /> Wrong entrance? Go back

@@ -4,7 +4,7 @@ import { Search, RotateCcw, Compass, MapPin } from "lucide-react";
 const ScreenCantFind: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavigate }) => (
   <div className="space-y-4">
     <div className="px-1">
-      <h2 className="transit-hero-text">Can't find the room?</h2>
+      <h2 className="transit-hero-text">Got lost at this step?</h2>
       <p className="text-sm text-muted-foreground mt-1">Try these recovery steps</p>
     </div>
 
@@ -25,7 +25,7 @@ const ScreenCantFind: React.FC<{ onNavigate: (id: string) => void }> = ({ onNavi
         </div>
       </button>
 
-      <button className="transit-card-interactive w-full text-left flex items-center gap-3" onClick={() => onNavigate("floorSelection")}>
+      <button className="transit-card-interactive w-full text-left flex items-center gap-3" onClick={() => onNavigate("lastMile")}>
         <div className="transit-info-icon"><MapPin className="w-5 h-5" /></div>
         <div>
           <p className="font-bold text-base">Restart from here</p>

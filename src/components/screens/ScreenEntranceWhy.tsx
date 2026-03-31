@@ -33,11 +33,8 @@ const ScreenEntranceWhy: React.FC<{ onNavigate: (id: string) => void }> = ({ onN
     </div>
 
     {/* Visual cue - show image directly */}
-    <div className="transit-img-placeholder">
-      <div className="text-center">
-        <Eye className="w-8 h-8 mx-auto text-muted-foreground mb-1" />
-        <p className="text-xs text-muted-foreground">Entrance A - Glass double doors</p>
-      </div>
+    <div className="transit-img-placeholder" style={{ height: 200 }}>
+      <img src="/CSC318project/WIA.jpg" alt="Entrance A - Glass double doors" className="w-full h-full object-contain" />
     </div>
 
     <div className="transit-card">
